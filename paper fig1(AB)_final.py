@@ -1,4 +1,3 @@
-# figAB_simple.py
 # Simplified annotated script to compute and plot joint photon-number distribution P(m,n).
 # Fixed robust amplitude extraction to avoid AttributeError.
 
@@ -74,17 +73,14 @@ Pc, tot_c = joint_distribution(psi_out_c, N)
 print(f"Total prob in truncated basis (quantum input) = {tot_q:.6f}")
 print(f"Total prob in truncated basis (classical input) = {tot_c:.6f}")
 
-# 7) Plot histograms (3D bars) tuned to look like Fig. 1A,B in Afek et al.
-# (This block only; rest of the code is unchanged.)
+# 7) Plot histograms (3D bars) 
 
 cutoff_display = 15                # show low photon numbers up to 0..14
 m_vals = np.arange(cutoff_display)
 n_vals = np.arange(cutoff_display)
 m_grid, n_grid = np.meshgrid(m_vals, n_vals, indexing='ij')
 
-# IMPORTANT: transpose for plotting so axis ordering matches common optics plots
-#  P is P[m,n] with m rows and n columns. The paper's orientation
-# looks like P plotted with n along x and m along y in the rendered figure.
+#  P is P[m,n] with m rows and n columns. 
 # We transpose here so the visual matches better.
 Pq_plot = Pq[:cutoff_display, :cutoff_display].T.copy()
 Pc_plot = Pc[:cutoff_display, :cutoff_display].T.copy()
@@ -98,7 +94,7 @@ dx = dy = 0.9           # slightly larger bars, nearly touching
 z_q = Pq_plot.ravel()
 z_c = Pc_plot.ravel()
 
-# vertical exaggeration factor to make small probabilities visible (paper used visual scaling)
+# vertical exaggeration factor to make small probabilities visible 
 vz_scale = 1.0 / z_q.max() if z_q.max() > 0 else 1.0
 vz_scale_c = 1.0 / z_c.max() if z_c.max() > 0 else 1.0
 # choose modest exaggeration so shape is visible but not distorted

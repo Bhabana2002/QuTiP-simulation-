@@ -1,5 +1,3 @@
-# figC_improved_annot_phase_mode2.py
-# Annotated, beginner-friendly version for optimizing NOON fidelity vs parameters.
 # Phase applied to mode 2 (squeezed light)
 # Fixed robust amplitude extraction to avoid AttributeError.
 
@@ -9,12 +7,12 @@ import matplotlib.pyplot as plt
 from qutip import basis, coherent, squeeze, destroy, qeye, tensor, fidelity
 
 # ---------------- PARAMETERS ----------------
-N_cut = 36                 # truncation for each mode (increase if needed)
+N_cut = 36                 # truncation for each mode 
 alpha_grid = np.linspace(0.5, 6.0, 25)  # grid of coherent amplitudes to scan
 r_grid = np.linspace(0.15, 0.55, 21)    # grid of squeezing strengths to scan
 phi_cs = np.pi/2           # relative phase between coherent and squeezed
 theta_bs = np.pi/4         # 50/50 beamsplitter mixing
-N_values = list(range(2, 21))  # the total photon numbers we will evaluate (2..20)
+N_values = list(range(2, 21))  # the total photon numbers to evaluate (2..20)
 P_thresh = 1e-12           # tiny number to avoid division by zero
 P_prune = 1e-9             # skip fidelity computation when P_N < this
 # --------------------------------------------
@@ -73,7 +71,7 @@ def noon_state(Ntot):
     k2 = tensor(basis(N_cut, 0), basis(N_cut, Ntot))
     return (k1 + k2).unit()
 
-# quick truncation sanity check (optional)
+# quick truncation sanity check 
 alpha_test = alpha_grid[len(alpha_grid)//2]
 r_test = r_grid[len(r_grid)//2]
 psi_out_test = build_output_state(alpha_test, r_test)

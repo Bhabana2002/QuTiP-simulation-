@@ -1,4 +1,3 @@
-# figD_noon_fringe_fixed.py
 """
 Plot exact N-fold interference fringe for an ideal NOON state of chosen N.
 """
